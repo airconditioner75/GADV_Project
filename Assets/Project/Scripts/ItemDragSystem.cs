@@ -29,6 +29,8 @@ public class ItemDragSystem : MonoBehaviour
             DropObject();
         }
 
+        DrawGrabRay();  
+
     }
 
     void TryGrabObject()
