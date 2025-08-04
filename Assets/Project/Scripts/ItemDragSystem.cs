@@ -29,26 +29,19 @@ public class ItemDragSystem : MonoBehaviour
             DropObject();
         }
 
-        DrawGrabRay();  
-
     }
 
     void TryGrabObject()
     {
-        // Cast a ray from the camera to where the mouse cursor is, which is locked in the middle
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        // Perform the raycast to only detect the interactablelayer
-        if (Physics.Raycast(ray, out hit, maxDistance, interactableLayer))
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, interactableLayer))
         {
-            
             grabbedObject = hit.transform;
-            grabDistance = Vector3.Distance(transform.position, grabbedObject.position);
+            grabDistance = Vector3.Distance(Camera.main.transform.position, grabbedObject.position);
 
-            //Freeze the rigidbody of the object so that physics wont affect it while moving around, leaving it active causes bugs
             if (grabbedObject.TryGetComponent(out Rigidbody rb))
             {
+                rb.isKinematic = false;
                 rb.useGravity = false;
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
@@ -56,14 +49,31 @@ public class ItemDragSystem : MonoBehaviour
             }
         }
     }
+
+
     void DragObject()
     {
-        Vector3 targetPosition = transform.position + transform.forward * grabDistance;
+        Vector3 rayOrigin = Camera.main.transform.position;
+        Vector3 rayDirection = Camera.main.transform.forward;
+
+        float offset = 0.01f;
+        Vector3 intendedTarget = rayOrigin + rayDirection * grabDistance;
+        Vector3 targetPosition = intendedTarget;
+
+        // Check if there's a wall or obstacle between camera and the intended target
+        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, grabDistance))
+        {
+            // Only stop early if the object we hit is not the grabbed object
+            if (hit.transform != grabbedObject)
+            {
+                // Wall or other object is in the way — move object just in front of it
+                targetPosition = hit.point - rayDirection * offset;
+            }
+        }
 
         if (grabbedObject.TryGetComponent(out Rigidbody rb))
         {
-            // Move the object using move position so that it colldies with other objects
-            Vector3 moveDirection = (targetPosition - grabbedObject.position);
+            Vector3 moveDirection = targetPosition - grabbedObject.position;
             rb.MovePosition(grabbedObject.position + moveDirection * Time.deltaTime * dragSpeed);
         }
     }
@@ -73,17 +83,19 @@ public class ItemDragSystem : MonoBehaviour
         // Unfreeze the rigidbody once the player stops holding the object so that physics affects it again
         if (grabbedObject.TryGetComponent(out Rigidbody rb))
         {
+            rb.isKinematic = false;
             rb.useGravity = true;
             rb.freezeRotation = false;
         }
 
         grabbedObject = null;
     }
-    void DrawGrabRay()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
-    }
+
+    //void DrawGrabRay()
+    //{
+    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
+    //}
 }
 
 
