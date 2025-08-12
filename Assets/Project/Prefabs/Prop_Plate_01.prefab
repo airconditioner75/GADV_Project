@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6630894683592964028}
   - component: {fileID: 8926518039684662134}
   - component: {fileID: 8526713959347241766}
+  - component: {fileID: 8048595888784836891}
   m_Layer: 0
   m_Name: Prop_Plate_01
   m_TagString: Untagged
@@ -27,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6981037562058695331}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1367705, y: 2.1367705, z: 2.1367705}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7613084560423289367, guid: 7cc13f9ac2e060c4a961313f389e8329, type: 3}
+--- !u!114 &8048595888784836891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981037562058695331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d07d264ab1bf944d83351277325d33d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientATag: Meat
+  ingredientBTag: Bread
+  resultPrefab: {fileID: 5898702171912911067, guid: 7dbc5016287a421438d04b83688612bb,
+    type: 3}

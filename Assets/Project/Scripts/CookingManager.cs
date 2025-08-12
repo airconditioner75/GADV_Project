@@ -45,11 +45,4 @@ public class CookingManager : MonoBehaviour
             }
         }
     }
-
-    private void MergeObjects(GameObject otherObject)
-    {
-        // This method can be used to merge objects if needed
-        // For now, it just destroys the other object
-        Destroy(otherObject);
-    }
 }

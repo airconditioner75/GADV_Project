@@ -10,6 +10,8 @@ TagManager:
   - Grill
   - Bread
   - Meat
+  - Burger
+  - Fries
   layers:
   - Default
   - TransparentFX
