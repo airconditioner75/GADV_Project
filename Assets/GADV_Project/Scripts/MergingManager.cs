@@ -14,16 +14,15 @@ public class MergingManager : MonoBehaviour
     {
         GameObject other = collision.gameObject;
 
-        // Only track objects with the correct tags
         if (other.CompareTag(ingredientATag) || other.CompareTag(ingredientBTag))
         {
             if (!ingredientsOnPlate.Contains(other))
                 ingredientsOnPlate.Add(other);
 
-            TryMerge();
+            Merge();
         }
     }
-    void TryMerge()
+    void Merge()
     {
         GameObject meat = ingredientsOnPlate.Find(obj => obj.CompareTag(ingredientATag));
         GameObject bread = ingredientsOnPlate.Find(obj => obj.CompareTag(ingredientBTag));

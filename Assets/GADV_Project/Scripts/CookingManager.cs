@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CookingManager : MonoBehaviour
 {
-    public string requiredTag; // Tool or station tag e.g. "Knife" or "Fryer"
-    public GameObject outputPrefab; // The object to spawn after transformation
-    public float requiredTime = 0f; // 0 means instantly transform to the next object, this is for cutting/kneading
+    public string requiredTag; 
+    public GameObject outputPrefab; 
+    public float requiredTime = 0f; 
     private float timer = 0f;
     private bool isInTrigger = false;
 
@@ -34,12 +34,12 @@ public class CookingManager : MonoBehaviour
         {
             if (requiredTime <= 0f)
             {
-                // Instant transformation
+
                 TransformObject();
             }
             else
             {
-                // Start timing
+
                 isInTrigger = true;
                 timer = 0f;
             }

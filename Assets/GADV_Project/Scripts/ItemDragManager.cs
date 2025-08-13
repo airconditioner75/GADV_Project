@@ -56,7 +56,7 @@ public class ItemDragManager : MonoBehaviour
         Vector3 rayOrigin = Camera.main.transform.position;
         Vector3 rayDirection = Camera.main.transform.forward;
 
-        float offset = 0.01f;
+        float offset = 0.03f;
         Vector3 intendedTarget = rayOrigin + rayDirection * grabDistance;
         Vector3 targetPosition = intendedTarget;
 

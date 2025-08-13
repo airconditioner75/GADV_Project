@@ -9,10 +9,11 @@ public class OrderSystem : MonoBehaviour
     {
         public int burgersNeeded;
         public int friesNeeded;
-        public float timeLimit; 
+        public float timeLimit;
     }
 
     public List<Order> dailyOrders = new List<Order>();
+    public UIManager UIManager; 
 
     private int currentDay = 0;
     private int burgersCount = 0;
@@ -22,16 +23,12 @@ public class OrderSystem : MonoBehaviour
 
     public bool OrderActive => orderActive;
     public int DayNumber => currentDay + 1;
-    public int BurgersRemaining => Mathf.Max(0, dailyOrders.Count > 0 ? dailyOrders[currentDay].burgersNeeded - burgersCount : 0);
-    public int FriesRemaining => Mathf.Max(0, dailyOrders.Count > 0 ? dailyOrders[currentDay].friesNeeded - friesCount : 0);
-    public float TimeRemaining => Mathf.Max(0f, dailyOrders.Count > 0 ? dailyOrders[currentDay].timeLimit - timer : 0f);
+    public int BurgersRemaining => Mathf.Max(0, dailyOrders[currentDay].burgersNeeded - burgersCount);
+    public int FriesRemaining => Mathf.Max(0, dailyOrders[currentDay].friesNeeded - friesCount);
+    public float TimeRemaining => Mathf.Max(0f, dailyOrders[currentDay].timeLimit - timer);
 
     void Start()
     {
-        if (dailyOrders == null || dailyOrders.Count == 0)
-        {
-            return;
-        }
         StartDay(0);
     }
 
@@ -43,8 +40,8 @@ public class OrderSystem : MonoBehaviour
 
         if (timer >= dailyOrders[currentDay].timeLimit)
         {
-            NextDay();
-            return;
+            orderActive = false;
+            UIManager.ShowLoseScreen();
         }
     }
 
@@ -53,6 +50,7 @@ public class OrderSystem : MonoBehaviour
         if (dayIndex >= dailyOrders.Count)
         {
             orderActive = false;
+            UIManager.ShowWinScreen();
             return;
         }
 
@@ -61,13 +59,10 @@ public class OrderSystem : MonoBehaviour
         friesCount = 0;
         timer = 0f;
         orderActive = true;
-
-        var o = dailyOrders[currentDay];
     }
 
     void NextDay()
     {
-        orderActive = false;
         StartDay(currentDay + 1);
     }
 
@@ -75,27 +70,16 @@ public class OrderSystem : MonoBehaviour
     {
         if (!orderActive) return;
 
-        if (collision.gameObject.CompareTag("Burger"))
+        if (collision.gameObject.CompareTag("Burger") && BurgersRemaining > 0)
         {
-            if (BurgersRemaining > 0)
-            {
-                burgersCount++;
-                Destroy(collision.gameObject);
-            }
+            burgersCount++;
+            Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Fries"))
+        else if (collision.gameObject.CompareTag("Fries") && FriesRemaining > 0)
         {
-            if (FriesRemaining > 0)
-            {
-                friesCount++;
-                Destroy(collision.gameObject);
-            }
+            friesCount++;
+            Destroy(collision.gameObject);
         }
-        else
-        {
-            return;
-        }
-
 
         if (BurgersRemaining == 0 && FriesRemaining == 0)
         {
