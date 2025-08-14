@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 82101396737022627}
   - component: {fileID: 2794300503956270697}
   - component: {fileID: 5005932446997175082}
-  - component: {fileID: 5071004124447671742}
   - component: {fileID: 5347857454267476388}
   m_Layer: 6
   m_Name: Prop_RollingPin
@@ -108,23 +107,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5875705283742258118, guid: 145b8b88a0080c34baf5aa92381fda92, type: 3}
---- !u!114 &5071004124447671742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4451709210390794172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cef9763921f17342aae48ec1df5bb73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 10
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  dragSpeed: 10
 --- !u!54 &5347857454267476388
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 5302638972010449749}
   - component: {fileID: 198280903764014799}
   - component: {fileID: -3558933094520178540}
-  - component: {fileID: -3317596452701798199}
   - component: {fileID: 5990180620566958930}
   m_Layer: 6
   m_Name: Food_Dough
-  m_TagString: Untagged
+  m_TagString: Dough
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,23 +135,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &-3317596452701798199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5951012663612729984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cef9763921f17342aae48ec1df5bb73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 10
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  dragSpeed: 10
 --- !u!114 &5990180620566958930
 MonoBehaviour:
   m_ObjectHideFlags: 0

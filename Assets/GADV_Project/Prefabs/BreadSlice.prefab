@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1717364492968592832}
   - component: {fileID: 4464159629190808481}
-  - component: {fileID: 6240445907199505444}
   - component: {fileID: 2657058906432346578}
   - component: {fileID: 2622367304730530187}
   m_Layer: 6
@@ -112,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 2062258598321545082}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.027}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -147,23 +146,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &6240445907199505444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062258598321545082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cef9763921f17342aae48ec1df5bb73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 10
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  dragSpeed: 10
 --- !u!65 &2657058906432346578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -183,8 +165,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.28, y: 0.31, z: 0.07}
-  m_Center: {x: 0.2, y: 0, z: 0.27}
+  m_Size: {x: 0.34, y: 0.38, z: 0.08}
+  m_Center: {x: 0.2, y: 0, z: 0.273}
 --- !u!64 &2622367304730530187
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4036303033778716943}
   - component: {fileID: 2298845101895890373}
   - component: {fileID: 1278515062568161069}
-  - component: {fileID: 4860322114825634765}
   - component: {fileID: -3545540586381140157}
   m_Layer: 6
   m_Name: SteakCooked
@@ -115,23 +114,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4860322114825634765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353496289189106704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cef9763921f17342aae48ec1df5bb73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 10
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  dragSpeed: 10
 --- !u!64 &-3545540586381140157
 MeshCollider:
   m_ObjectHideFlags: 0

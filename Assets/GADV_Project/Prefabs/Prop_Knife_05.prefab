@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3529810150536738854}
   - component: {fileID: 1664239391530257644}
   - component: {fileID: 5005824516933949295}
-  - component: {fileID: 6533614860631786654}
   - component: {fileID: 2494381722020184393}
   m_Layer: 6
   m_Name: Prop_Knife_05
@@ -108,23 +107,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 434273585134630880, guid: b4d737c1ea4838b4f8306973058ef02c, type: 3}
---- !u!114 &6533614860631786654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871565930401901881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cef9763921f17342aae48ec1df5bb73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDistance: 10
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  dragSpeed: 10
 --- !u!54 &2494381722020184393
 Rigidbody:
   m_ObjectHideFlags: 0
