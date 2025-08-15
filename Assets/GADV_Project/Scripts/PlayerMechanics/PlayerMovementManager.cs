@@ -8,6 +8,8 @@ public class PlayerMovementManager : MonoBehaviour
     public float moveSpeed = 5f;
     public float mouseSensitivity = 100f;
     public Transform cameraTransform;
+    public float gravity = -9.81f;
+    private Vector3 velocity;
     private float xRotation = 0f;
 
     void Start()
@@ -52,5 +54,8 @@ public class PlayerMovementManager : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * moveSpeed * Time.deltaTime);
 
+        // Apply gravity, take the current velocity and add gravity to it, then move the character controller by the velocity.
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 }
