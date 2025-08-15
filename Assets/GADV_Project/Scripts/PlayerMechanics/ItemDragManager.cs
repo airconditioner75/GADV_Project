@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Presets;
 using UnityEngine;
 
 public class ItemDragManager : MonoBehaviour
