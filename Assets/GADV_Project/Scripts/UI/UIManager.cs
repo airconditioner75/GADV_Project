@@ -13,12 +13,6 @@ public class UIManager : MonoBehaviour
     public GameObject tornadoScreen;         
     public GameObject inverseGravityScreen;
 
-    void Start()
-    {
-        loseScreen.SetActive(false);
-        winScreen.SetActive(false);
-    }
-
     void Update()
     {
         OrderText();
@@ -26,12 +20,14 @@ public class UIManager : MonoBehaviour
 
     void OrderText()
     {
+        // if there is no active order, display filler message
         if (!orderSystem.OrderActive)
         {
-            orderText.text = "Waiting for next order...";
+            orderText.text = "No more orders!";
             return;
         }
 
+        // display current day number, remaining items, and time left by referencing the orderSystem data
         orderText.text =
             "Day: " + orderSystem.DayNumber + "\n" +
             "Burgers: " + orderSystem.BurgersRemaining + "\n" +
@@ -41,6 +37,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowLoseScreen()
     {
+        // Show lose screen and pause the game
+        // unlock the cursor cause it was in first person, so that the player can click on the restart button
         loseScreen.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
@@ -49,6 +47,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowWinScreen()
     {
+        // Show win screen and pause the game
+        // unlock the cursor cause it was in first person, so that the player can click on the restart button
         winScreen.SetActive(true);
         Time.timeScale = 0f; 
         Cursor.lockState = CursorLockMode.None;
@@ -57,26 +57,27 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
+        // Restart the game by reloading the current scene
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
+    IEnumerator ShowPanelForSeconds(GameObject panel, float seconds)
+    {
+        // Show the text for tornado and gravity respectively, wait the given time, then hide it again.
+        panel.SetActive(true);
+        yield return new WaitForSeconds(seconds);
+        panel.SetActive(false);
+    }
     public void ShowTornadoScreen(float seconds)
     {
-        if (tornadoScreen == null) return;
+        // Show the tornado text for a set number of seconds.
         StartCoroutine(ShowPanelForSeconds(tornadoScreen, seconds));
     }
 
     public void ShowInverseGravityScreen(float seconds)
     {
-        if (inverseGravityScreen == null) return;
+        // Show the inverse gravity text for a set number of seconds.
         StartCoroutine(ShowPanelForSeconds(inverseGravityScreen, seconds));
-    }
-    IEnumerator ShowPanelForSeconds(GameObject panel, float seconds)
-    {
-        panel.SetActive(true);
-        yield return new WaitForSeconds(seconds);
-        panel.SetActive(false);
     }
 }
 

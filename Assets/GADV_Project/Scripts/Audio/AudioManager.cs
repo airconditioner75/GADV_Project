@@ -4,80 +4,54 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // One AudioSource to play everything
-    public AudioSource audioSourceChopping;
-    public AudioSource audioSourceKneading;
-    public AudioSource audioSourceFrying;
-    public AudioSource audioSourceGrilling;
-    public AudioSource audioSourceFinish;
-    public AudioSource audioSourceLose;
-    public AudioSource audioSourceWin;
+    public AudioSource ChoppingAudio;
+    public AudioSource KneadingAudio;
+    public AudioSource FryingAudio;
+    public AudioSource GrillingAudio;
 
-    // AudioClips set in the Inspector
     public AudioClip choppingClip;
     public AudioClip kneadingClip;
     public AudioClip fryingClip;
     public AudioClip grillingClip;
-    public AudioClip finishClip;
-    public AudioClip loseClip;
-    public AudioClip winClip;
 
     public void PlayChopping()
     {
-        audioSourceChopping.PlayOneShot(choppingClip);
+            ChoppingAudio.PlayOneShot(choppingClip);
     }
 
     public void PlayKneading()
     {
-        audioSourceKneading.PlayOneShot(kneadingClip);
+            KneadingAudio.PlayOneShot(kneadingClip);
     }
 
-    public void PlayFinish()
-    {
-        audioSourceFinish.PlayOneShot(finishClip);
-    }
 
-    public void StartFrying()
-    {
-        if (!audioSourceFrying.isPlaying)
-        {
-            audioSourceFrying.clip = fryingClip;
-            audioSourceFrying.loop = true;
-            audioSourceFrying.Play();
-        }
-    }
 
-    public void StopFrying()
-    {
-        if (audioSourceFrying.isPlaying)
-            audioSourceFrying.Stop();
-    }
+    // Im not sure how to implement the frying and grilling audio 
+    // whenever the cut potato is in the fryer or the uncooked meat is on the grill.
+    //once it destorys the cut potato or uncooked meat, it should stop the audio.
+    // but it doesnt and I dont know how to implement it.
 
-    public void StartGrilling()
-    {
-        if (!audioSourceGrilling.isPlaying)
-        {
-            audioSourceGrilling.clip = grillingClip;
-            audioSourceGrilling.loop = true;
-            audioSourceGrilling.Play();
-        }
-    }
+    //public void StartFrying()
+    //{
+    //    FryingAudio.clip = fryingClip;
+    //    FryingAudio.Play();
+    //}
 
-    public void StopGrilling()
-    {
-        if (audioSourceGrilling.isPlaying)
-            audioSourceGrilling.Stop();
-    }
+    //public void StopFrying()
+    //{
+    //    FryingAudio.Stop();
+    //}
 
-    public void PlayLose()
-    {
-        audioSourceLose.PlayOneShot(loseClip);
-    }
+    //public void StartGrilling()
+    //{
+    //    GrillingAudio.clip = grillingClip;
+    //    GrillingAudio.Play();
+    //}
 
-    public void PlayWin()
-    {
-        audioSourceWin.PlayOneShot(winClip);
-    }
+    //public void StopGrilling()
+    //{
+    //    GrillingAudio.Stop();
+    //}
 }
 
 

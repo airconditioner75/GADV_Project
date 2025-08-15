@@ -6,15 +6,14 @@ public class PlayerMovementManager : MonoBehaviour
 {
     private CharacterController controller;
     public float moveSpeed = 5f;
-    public float gravity = -9.81f;
     public float mouseSensitivity = 100f;
     public Transform cameraTransform;
-    private Vector3 velocity;
     private float xRotation = 0f;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        //lock the mouse in the center of the screen and hide it so it becomes first person
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -26,8 +25,11 @@ public class PlayerMovementManager : MonoBehaviour
 
     void HandleMouseLook()
     {
-        // Find the inputs of the mouse if they are moving it 
+        // find the inputs of the mouse if they are moving it 
+
+        // get the horizontal mouse movement (turning left/right)  by sensitivity & frame time.
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        // get the vertical mouse movement (looking up/down)  by sensitivity & frame time.
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
@@ -41,15 +43,14 @@ public class PlayerMovementManager : MonoBehaviour
     void HandleMovement()
     {
 
-        // Find the inputs of the movement
+        // find the vertical and horizontal inputs of the movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        // convert input into world movement direction relative to where the player is facing.
+        // move the charactercontroller in the calculated direction at moveSpeed by deltatime.
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * moveSpeed * Time.deltaTime);
 
-        // Apply gravity 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 }

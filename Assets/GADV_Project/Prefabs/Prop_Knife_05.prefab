@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1664239391530257644}
   - component: {fileID: 5005824516933949295}
   - component: {fileID: 2494381722020184393}
+  - component: {fileID: 6209219606158462391}
   m_Layer: 6
   m_Name: Prop_Knife_05
   m_TagString: Knife
@@ -134,3 +135,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &6209219606158462391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871565930401901881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: decbea717cc500e4c8b84fe20032cb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}

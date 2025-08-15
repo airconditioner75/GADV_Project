@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2794300503956270697}
   - component: {fileID: 5005932446997175082}
   - component: {fileID: 5347857454267476388}
+  - component: {fileID: 9153906599257024758}
   m_Layer: 6
   m_Name: Prop_RollingPin
   m_TagString: Pin
@@ -134,3 +135,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &9153906599257024758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4451709210390794172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: decbea717cc500e4c8b84fe20032cb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}

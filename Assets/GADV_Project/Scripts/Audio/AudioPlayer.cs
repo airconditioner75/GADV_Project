@@ -6,48 +6,58 @@ public class AudioPlayer : MonoBehaviour
 {
     public AudioManager audioManager;
 
-    void Awake()
-    {
-        if (!audioManager) audioManager = FindObjectOfType<AudioManager>();
-    }
-
     void OnCollisionEnter(Collision collision)
     {
-        if (!audioManager) return;
 
-        string a = gameObject.tag;
-        string b = collision.gameObject.tag;
+        // store the tags first of the two colliding objects.
+        // then we compare the tags of the two objects.
+        // then based on that we can play an audio clip based on the tags.
 
-        // Chop
-        if ((a == "Potato" && b == "Knife") || (a == "Knife" && b == "Potato"))
+        string Tag = gameObject.tag;
+        string otherTag = collision.gameObject.tag;
+
+        if ((Tag == "Potato" && otherTag == "Knife") || (Tag == "Knife" && otherTag == "Potato"))
+        {
             audioManager.PlayChopping();
+        }
 
-        // Knead
-        if ((a == "Dough" && b == "Pin") || (a == "Pin" && b == "Dough"))
+        if ((Tag == "Dough" && otherTag == "Pin") || (Tag == "Pin" && otherTag == "Dough"))
+        {
             audioManager.PlayKneading();
+        }
 
-        // Grill start
-        if ((a == "UncookedMeat" && b == "Grill") || (a == "Grill" && b == "UncookedMeat"))
-            audioManager.StartGrilling();
 
-        // Fry start
-        if ((a == "CutPotato" && b == "Fryer") || (a == "Fryer" && b == "CutPotato"))
-            audioManager.StartFrying();
-    }
+        // Im not sure how to implement the frying and grilling audio 
+        // whenever the cut potato is in the fryer or the uncooked meat is on the grill. it stars the audio but
+        // once it destorys the cut potato or uncooked meat, it should stop the audio.
+        // but it doesnt and I dont know how to implement it.
 
-    void OnCollisionExit(Collision collision)
-    {
-        if (!audioManager) return;
+        //    if ((Tag == "UncookedMeat" && otherTag == "Grill") || (Tag == "Grill" && otherTag == "UncookedMeat"))
+        //    {
+        //        audioManager.StartGrilling();
+        //    }
 
-        string a = gameObject.tag;
-        string b = collision.gameObject.tag;
+        //    if ((Tag == "CutPotato" && otherTag == "Frier") || (Tag == "Frier" && otherTag == "CutPotato"))
+        //    {
+        //        audioManager.StartFrying();
+        //    }
+        //}
 
-        // Grill stop
-        if ((a == "UncookedMeat" && b == "Grill") || (a == "Grill" && b == "UncookedMeat"))
-            audioManager.StopGrilling();
+        //void OnCollisionExit(Collision collision)
+        //{
 
-        // Fry stop
-        if ((a == "CutPotato" && b == "Fryer") || (a == "Fryer" && b == "CutPotato"))
-            audioManager.StopFrying();
+        //    string Tag = gameObject.tag;
+        //    string otherTag = collision.gameObject.tag;
+
+        //    if ((Tag == "UncookedMeat" && otherTag == "Grill") || (Tag == "Grill" && otherTag == "UncookedMeat"))
+        //    {
+        //        audioManager.StopGrilling();
+        //    }
+
+        //    if ((Tag == "CutPotato" && otherTag == "Frier") || (Tag == "Frier" && otherTag == "CutPotato"))
+        //    {
+        //        audioManager.StopFrying();
+        //    }
+        //}
     }
 }

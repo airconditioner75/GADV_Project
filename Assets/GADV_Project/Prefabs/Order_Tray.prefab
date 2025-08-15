@@ -122,7 +122,7 @@ MonoBehaviour:
   dailyOrders:
   - burgersNeeded: 2
     friesNeeded: 3
-    timeLimit: 10
+    timeLimit: 180
   - burgersNeeded: 5
     friesNeeded: 5
     timeLimit: 240
